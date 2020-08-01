@@ -133,8 +133,8 @@ function Saved() {
                       <Card.Title style={{ fontWeight: "bold" }}>{book.volumeInfo.title}
                         <Button variant="primary" type="button" className="float-right" 
                           onClick={() => deleteBook(index)} >Delete</Button>
-                        <Button variant="primary" type="button" className="float-right" style={{ marginRight:"5px" }} 
-                          href={book.saleInfo.selfLink} >View</Button>
+                        <Button href={book.volumeInfo.infoLink} target="_blank" rel="noopener noreferrer" variant="primary" 
+                          type="button" className="float-right" style={{ marginRight:"5px" }} >View</Button>
                       </Card.Title>
                       { book.volumeInfo.authors.map((author, index) => (
                         <Card.Subtitle key={index}>{author}</Card.Subtitle>
