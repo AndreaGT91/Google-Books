@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
-import Nav from "./components/Nav";
+import NavBar from "./components/NavBar";
 
 function App() {
   const pathArray = window.location.pathname.split("/");
@@ -19,7 +20,7 @@ function App() {
   return (
     <Router basename={pathState}>
       <>
-        <Nav />
+        <NavBar />
         <Switch>
           <Route exact path="/Search"><Search /></Route>
           <Route exact path="/Saved"><Saved /></Route>
