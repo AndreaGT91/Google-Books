@@ -33,14 +33,13 @@ function Search() {
           <Card border="dark">
             <Card.Header>
               <Card.Title>Book Title Here
-                <Button variant="primary" type="button" className="float-right">View</Button>
                 <Button variant="primary" type="button" className="float-right">Save</Button>
+                <Button variant="primary" type="button" className="float-right" style={{ marginRight:"10px" }}>View</Button>
               </Card.Title>
               <Card.Subtitle>Authors Here</Card.Subtitle>
             </Card.Header>
             <Card.Body>
               <Card.Text className="align-top">
-                {/* <Card.Img src="https://via.placeholder.com/150" className="h-25 w-25" /> */}
                 <Card.Img src="https://via.placeholder.com/150" style={{ height:"150px", width:"150px", marginRight:"10px", float:"left" }} />
                 Book's description will go here.
               </Card.Text>
