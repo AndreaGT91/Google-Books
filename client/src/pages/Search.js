@@ -31,12 +31,18 @@ function Search() {
         <Container>
           <h4 style={{ marginBottom: "20px" }}>Results</h4>
           <Card border="dark">
-            <Card.Header>Header</Card.Header>
+            <Card.Header>
+              <Card.Title>Book Title Here
+                <Button variant="primary" type="button" className="float-right">View</Button>
+                <Button variant="primary" type="button" className="float-right">Save</Button>
+              </Card.Title>
+              <Card.Subtitle>Authors Here</Card.Subtitle>
+            </Card.Header>
             <Card.Body>
-              <Card.Title>Dark Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk
-                of the card's content.
+              <Card.Text className="align-top">
+                {/* <Card.Img src="https://via.placeholder.com/150" className="h-25 w-25" /> */}
+                <Card.Img src="https://via.placeholder.com/150" style={{ height:"150px", width:"150px", marginRight:"10px", float:"left" }} />
+                Book's description will go here.
               </Card.Text>
             </Card.Body>
           </Card>
