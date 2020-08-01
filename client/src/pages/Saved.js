@@ -4,7 +4,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card';
 import Wrapper from "../components/Wrapper";
-import API from "../utils/saved-API";
+import API from "../utils/API";
 
 function Saved() {
   // Setting our component's initial state

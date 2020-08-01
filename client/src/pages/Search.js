@@ -4,35 +4,57 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card';
+import Alert from 'react-bootstrap/Alert'
 import Wrapper from "../components/Wrapper";
-import getGoogleBooks from "../utils/search-API";
+import API from "../utils/API";
 
 function Search() {
   // Setting our component's initial state
+  const defaultAlertState = { show: false, type: "", msg: "" };
+  const successAlertState = { show: true, type: "success", msg: "Book saved successfully" };
+  const errorAlertState = { show: true, type: "danger", msg: "Unable to save book" };
+  const infoAlertState = { show: true, type: "info", msg: "Please enter keyword(s) to search for" };
+
   const [books, setBooks] = useState( [] );
   const [keyword, setKeyword] = useState( "" );
+  const [showAlert, setShowAlert] = useState( defaultAlertState);
 
   function saveBook(index) {
-
+    API.createSavedBook(books[index])
+    .then(setShowAlert(successAlertState))
+    .catch(setShowAlert(errorAlertState));
   };
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     setKeyword(event.target.value);
+    if (showAlert.show) {
+      setShowAlert(defaultAlertState);
+    };
   };
 
   // When the form is submitted, load books matching the entered keyword(s)
   function handleFormSubmit(event) {
     event.preventDefault();
     if (keyword) {
-      getGoogleBooks(keyword)
+      if (showAlert.show) {
+        setShowAlert(defaultAlertState);
+      };
+      API.getGoogleBooks(keyword)
       .then(response => setBooks(response.data.items))
       .catch(error => console.log(error));
+    }
+    else {
+      setShowAlert(infoAlertState);
     };
   };
 
   return (
     <Wrapper>
+      <Alert show={showAlert.show} variant={showAlert.type} transition={null}
+        onClose={() => setShowAlert(defaultAlertState)} dismissible>
+        <Alert.Heading>{showAlert.msg}</Alert.Heading>
+      </Alert>
       <Jumbotron fluid style={{ marginTop: "25px" }}>
         <Container>
           <h2 className="text-center">(React) Google Books Search</h2>
