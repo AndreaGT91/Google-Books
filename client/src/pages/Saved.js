@@ -25,15 +25,13 @@ function Saved() {
   // Loads all books and sets them to books
   function loadBooks() {
     API.getSavedBooks()
-      .then(response => 
-        setBooks(response.data)
-      )
+      .then(response => setBooks(response.data))
       .catch(error => console.log(error));
   };
 
   // Deletes a book from the database with a given id, then reloads books from the db
   function deleteBook(index) {
-    API.deleteBook(index)
+    API.deleteSavedBook(books[index]._id)
       .then(response => {
         setShowAlert(successAlertState);
         loadBooks(); 
@@ -77,8 +75,7 @@ function Saved() {
                     </Card.Header>
                     <Card.Body>
                       <Card.Text style={{ fontSize:"16px"}}>
-                        <Card.Img src={book.image} 
-                          style={{ height:"150px", width:"150px", marginRight:"10px", float:"left" }} />
+                        <Card.Img src={book.image} style={{ height:"150px", width:"150px", marginRight:"10px", float:"left" }} />
                         {book.description}
                       </Card.Text>
                     </Card.Body>

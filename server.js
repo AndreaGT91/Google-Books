@@ -27,6 +27,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
+console.log("PID: " + process.pid);
+
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now listening on port ${PORT}!`);
 });

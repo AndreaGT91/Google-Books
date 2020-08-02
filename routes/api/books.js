@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const booksController = require("../../controllers/booksController");
-
-console.log("in routes/api/books.js");
+const googleController = require("../../controllers/googleController");
 
 router.route("/")
   .get(booksController.findAll)
@@ -10,6 +9,9 @@ router.route("/")
 router.route("/:id")
   .delete(booksController.remove);
 
+router.route("/search/:keyword")
+  .get(googleController.getGoogleBooks);
+
 router.route("/books")
   .get(booksController.findAll)
   .post(booksController.create);
@@ -17,11 +19,17 @@ router.route("/books")
 router.route("/books/:id")
   .delete(booksController.remove);
 
+router.route("/books/search/:keyword")
+  .get(googleController.getGoogleBooks);
+
 router.route("/api/books")
   .get(booksController.findAll)
   .post(booksController.create);
 
 router.route("/api/books/:id")
   .delete(booksController.remove);
+
+router.route("/api/books/search/:keyword")
+  .get(googleController.getGoogleBooks);
 
 module.exports = router;
