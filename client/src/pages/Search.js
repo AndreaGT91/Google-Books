@@ -56,10 +56,9 @@ function Search() {
         setShowAlert(defaultAlertState);
       };
       API.getGoogleBooks(keyword)
-      // .then(response => setBooks(response.data.items))
       .then(response => {
-        if (response.data.totalItems) {
-          setBooks(response.data.items)
+        if (response.data.length) {
+          setBooks(response.data)
         }
         else {
           setBooks([]);
