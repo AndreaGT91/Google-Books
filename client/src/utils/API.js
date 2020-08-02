@@ -7,8 +7,7 @@ export default {
   getGoogleBooks: function(keywords) {
     // Replace spaces in array with + sign
     const keyword = keywords.replace(/\s/g, "+");
-    // return axios.get("/api/books/search/" + keyword);
-    return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${keyword}&key=AIzaSyAC006GMIVhq5L7qQ02A9N0uME2vZxC2Gk`);
+    return axios.get("/api/books/search/" + keyword);
   },
   
   // Gets all saved books
