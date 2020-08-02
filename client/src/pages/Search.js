@@ -29,10 +29,14 @@ function Search() {
     };
 
     API.createSavedBook(newBook)
-    .then(setShowAlert(successAlertState))
+    .then(() => {
+      setShowAlert(successAlertState);
+      window.scrollTo(0, 0);
+    })
     .catch(error => {
       console.log(error);
       setShowAlert(errorAlertState);
+      window.scrollTo(0, 0);
     });
   };
 
@@ -65,6 +69,7 @@ function Search() {
     }
     else {
       setShowAlert(infoAlertState);
+      window.scrollTo(0, 0);
     };
   };
 
