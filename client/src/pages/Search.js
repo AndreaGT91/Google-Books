@@ -30,7 +30,10 @@ function Search() {
 
     API.createSavedBook(newBook)
     .then(setShowAlert(successAlertState))
-    .catch(setShowAlert(errorAlertState));
+    .catch(error => {
+      console.log(error);
+      setShowAlert(errorAlertState);
+    });
   };
 
   // Handles updating component state when the user types into the input field
