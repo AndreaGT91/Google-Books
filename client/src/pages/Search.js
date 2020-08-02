@@ -9,18 +9,26 @@ import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
 
 function Search() {
-  // Setting our component's initial state
   const defaultAlertState = { show: false, type: "", msg: "" };
   const successAlertState = { show: true, type: "success", msg: "Book saved successfully" };
   const errorAlertState = { show: true, type: "danger", msg: "Unable to save book" };
   const infoAlertState = { show: true, type: "info", msg: "Please enter keyword(s) to search for" };
 
+  // Setting our component's initial state
   const [books, setBooks] = useState( [] );
   const [keyword, setKeyword] = useState( "" );
   const [showAlert, setShowAlert] = useState( defaultAlertState);
 
   function saveBook(index) {
-    API.createSavedBook(books[index])
+    const newBook = {
+      title: books[index].volumeInfo.title,
+      authors: books[index].volumeInfo.authors,
+      description: books[index].volumeInfo.description,
+      image: books[index].volumeInfo.imageLinks.thumbnail,
+      link: books[index].volumeInfo.infoLink
+    };
+
+    API.createSavedBook(newBook)
     .then(setShowAlert(successAlertState))
     .catch(setShowAlert(errorAlertState));
   };
@@ -41,7 +49,15 @@ function Search() {
         setShowAlert(defaultAlertState);
       };
       API.getGoogleBooks(keyword)
-      .then(response => setBooks(response.data.items))
+      // .then(response => setBooks(response.data.items))
+      .then(response => {
+        if (response.data.totalItems) {
+          setBooks(response.data.items)
+        }
+        else {
+          setBooks([]);
+        }
+      })
       .catch(error => console.log(error));
     }
     else {
