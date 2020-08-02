@@ -14,7 +14,7 @@ function Saved() {
 
   // Setting our component's initial state
   const [books, setBooks] = useState( [] );
-  const [showAlert, setShowAlert] = useState( defaultAlertState);
+  const [showAlert, setShowAlert] = useState( defaultAlertState );
 
   // Setting our component's initial state
   // Load all books and store them with setBooks
@@ -24,7 +24,7 @@ function Saved() {
 
   // Loads all books and sets them to books
   function loadBooks() {
-    API.getBooks()
+    API.getSavedBooks()
       .then(response => 
         setBooks(response.data)
       )
@@ -62,24 +62,24 @@ function Saved() {
           {books.length ? (
             <>
               { books.map((book, index) => (
-                <div  key={book.id}>
+                <div  key={book._id}>
                   <Card border="dark">
                     <Card.Header>
-                      <Card.Title style={{ fontWeight: "bold" }}>{book.volumeInfo.title}
+                      <Card.Title style={{ fontWeight: "bold" }}>{book.title}
                         <Button variant="primary" type="button" className="float-right" 
                           onClick={() => deleteBook(index)} >Delete</Button>
-                        <Button href={book.volumeInfo.infoLink} target="_blank" rel="noopener noreferrer" variant="primary" 
+                        <Button href={book.link} target="_blank" rel="noopener noreferrer" variant="primary" 
                           type="button" className="float-right" style={{ marginRight:"5px" }} >View</Button>
                       </Card.Title>
-                      { book.volumeInfo.authors.map((author, index) => (
+                      { book.authors.map((author, index) => (
                         <Card.Subtitle key={index}>{author}</Card.Subtitle>
                       ))}
                     </Card.Header>
                     <Card.Body>
                       <Card.Text style={{ fontSize:"16px"}}>
-                        <Card.Img src={book.volumeInfo.imageLinks.thumbnail} 
+                        <Card.Img src={book.image} 
                           style={{ height:"150px", width:"150px", marginRight:"10px", float:"left" }} />
-                        {book.volumeInfo.description}
+                        {book.description}
                       </Card.Text>
                     </Card.Body>
                   </Card>
