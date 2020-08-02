@@ -1,6 +1,25 @@
 # Google-Books
 React-based Google Books Search app.
 
+## GitHub Repository
+[github.com/AndreaGT91/Google-Books](https://github.com/AndreaGT91/Google-Books)
+
+## Heroku Deployment
+[shrouded-dusk-90862.herokuapp.com/](https://shrouded-dusk-90862.herokuapp.com/)
+
+## Installation 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
+
+## Usage 
+ `npm start`   
+ [localhost:3000/](http://localhost:3000/)
+
+## Questions 
+ ![Andrea Bentley](https://avatars2.githubusercontent.com/u/58275699?v=4&s=48)  Andrea Bentley  (AndreaGT91)     
+[andrea@bentleytech.com](mailto:andrea@bentleytech.com)
+
+
+## Assignment:
 # Google Books Search
 
 ### Overview
